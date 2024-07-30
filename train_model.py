@@ -8,13 +8,22 @@ import joblib
 # Load the dataset
 data = pd.read_csv('ObesityDataSet_raw_and_data_sinthetic.csv')
 
+# Print the columns to confirm the exact column names
+print("Columns in the dataset:", data.columns)
+
 # Data preprocessing
 # Encode categorical variables
 data_encoded = pd.get_dummies(data, drop_first=True)
 
+# Print the columns after encoding to confirm the exact column names
+print("Columns after encoding:", data_encoded.columns)
+
+# Identify the correct target column name by inspecting the output from the above print statements
+target_column = 'NObesitydad' 
+
 # Split the data into features and target
-X = data_encoded.drop('NObesitydad', axis=1)
-y = data_encoded['NObesitydad']
+X = data_encoded.drop(target_column, axis=1)
+y = data_encoded[target_column]
 
 # Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
