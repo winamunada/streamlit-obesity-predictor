@@ -11,8 +11,8 @@ data = pd.read_csv('ObesityDataSet_raw_and_data_sinthetic.csv')
 # Data preprocessing
 data_encoded = pd.get_dummies(data, drop_first=True)
 
-# Identify the correct target column name based on inspection
-target_column = 'NObeyesdad'  # Ensure this is the correct target column name
+# Identify the correct target column name
+target_column = 'NObeyesdad'  # Update this to the correct column name
 
 # Encode the target column
 label_encoder = LabelEncoder()
