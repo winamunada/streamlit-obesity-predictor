@@ -19,7 +19,7 @@ data_encoded = pd.get_dummies(data, drop_first=True)
 print("Columns after encoding:", data_encoded.columns)
 
 # Identify the correct target column name by inspecting the output from the above print statements
-target_column = 'TargetColumn' 
+target_column = 'NObeyesdad' 
 
 # Split the data into features and target
 X = data_encoded.drop(target_column, axis=1)
