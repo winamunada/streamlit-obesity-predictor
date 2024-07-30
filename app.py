@@ -51,6 +51,6 @@ input_data = pd.DataFrame({
 })
 
 # Predict obesity category
-prediction = model.predict(input_data)[0]
-
-st.write(f'The predicted obesity category is: {prediction}')
+if st.button('Predict'):
+    prediction = model.predict(input_data)[0]
+    st.write(f'The predicted obesity category is: {prediction}')
