@@ -54,7 +54,9 @@ input_data = pd.DataFrame({
 # Ensure the input data has the same columns as the training data
 input_data = input_data.reindex(columns=feature_names, fill_value=0)
 
-# Predict obesity category
-prediction = model.predict(input_data)[0]
-
-st.write(f'The predicted obesity category is: {prediction}')
+# Add a button to predict
+if st.button('Predict'):
+    # Predict obesity category
+    prediction_encoded = model.predict(input_data)[0]
+    prediction_label = label_encoder.inverse_transform([prediction_encoded])[0]
+    st.write(f'The predicted obesity category is: {prediction_label}')
