@@ -2,8 +2,9 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load the trained model
+# Load the trained model and feature names
 model = joblib.load('obesity_model.pkl')
+feature_names = joblib.load('feature_names.pkl')
 
 st.title('Obesity Prediction Web App')
 
@@ -50,7 +51,10 @@ input_data = pd.DataFrame({
     'Gender_Female': [1 if gender == 'Female' else 0]
 })
 
+# Ensure the input data has the same columns as the training data
+input_data = input_data.reindex(columns=feature_names, fill_value=0)
+
 # Predict obesity category
-if st.button('Predict'):
-    prediction = model.predict(input_data)[0]
-    st.write(f'The predicted obesity category is: {prediction}')
+prediction = model.predict(input_data)[0]
+
+st.write(f'The predicted obesity category is: {prediction}')
