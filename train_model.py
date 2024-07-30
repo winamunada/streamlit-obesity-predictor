@@ -13,8 +13,8 @@ data = pd.read_csv('ObesityDataSet_raw_and_data_sinthetic.csv')
 data_encoded = pd.get_dummies(data, drop_first=True)
 
 # Split the data into features and target
-X = data_encoded.drop('NObeyesdad', axis=1)
-y = data_encoded['NObeyesdad']
+X = data_encoded.drop('NObesitydad', axis=1)
+y = data_encoded['NObesitydad']
 
 # Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
