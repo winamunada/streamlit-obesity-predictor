@@ -19,7 +19,7 @@ data_encoded = pd.get_dummies(data, columns=['Gender', 'family_history_with_over
 print("Columns after encoding:", data_encoded.columns)
 
 # Identify the correct target column name
-target_column = 'NObeyesdad'
+target_column = 'NObeyesdad_Normal_Weight'
 
 # Split the data into features and target
 X = data_encoded.drop(target_column, axis=1)
