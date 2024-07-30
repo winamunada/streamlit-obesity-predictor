@@ -13,13 +13,13 @@ print("Columns in the dataset:", data.columns)
 
 # Data preprocessing
 # Encode categorical variables
-data_encoded = pd.get_dummies(data, drop_first=True)
+data_encoded = pd.get_dummies(data, columns=['Gender', 'family_history_with_overweight', 'FAVC', 'CAEC', 'SMOKE', 'SCC', 'CALC', 'MTRANS'], drop_first=True)
 
 # Print the columns after encoding to confirm the exact column names
 print("Columns after encoding:", data_encoded.columns)
 
-# Identify the correct target column name by inspecting the output from the above print statements
-target_column = 'NObeyesdad' 
+# Identify the correct target column name
+target_column = 'NObeyesdad'
 
 # Split the data into features and target
 X = data_encoded.drop(target_column, axis=1)
@@ -32,5 +32,15 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 pipeline = make_pipeline(StandardScaler(), LogisticRegression(max_iter=10000))
 pipeline.fit(X_train, y_train)
 
+# Evaluate the model
+train_score = pipeline.score(X_train, y_train)
+test_score = pipeline.score(X_test, y_test)
+
+print(f"Train accuracy: {train_score:.4f}")
+print(f"Test accuracy: {test_score:.4f}")
+
 # Save the model
 joblib.dump(pipeline, 'obesity_model.pkl')
+
+# Print feature names
+print("Feature names:", X.columns.tolist())
