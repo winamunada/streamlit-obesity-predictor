@@ -1,1 +1,3 @@
-
+git add obesity_model.pkl
+git commit -m "Add trained model file"
+git push
